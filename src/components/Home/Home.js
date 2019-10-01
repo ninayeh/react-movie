@@ -81,8 +81,23 @@ class Home extends Component  {
           />
           <SearchBar callback={this.searchItems} />
         </div> : null }
+        <div className="rmdb-home-grid">
+          <FourColGrid 
+            header={this.state.searchTerm ? "Search Result" : "Popular  Movie"}
+            loading={this.state.loading}
+          >  
+            {this.state.movies.map ( (element, i) => {
+              return <MovieThumb
+                        key={i}
+                        clickable={true}
+                        image={element.poster_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}/${element.poster_patch}` : './images/no_image.jpg'}
+                        movieID={element.id}
+                        movieName={element.original_title}  
+                      />
+            })}
+          </FourColGrid>
+        </div>
         
-        <FourColGrid />
         <Spinner />
         <LoadMoreBtn />
       </div>
