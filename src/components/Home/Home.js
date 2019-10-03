@@ -19,7 +19,7 @@ class Home extends Component  {
   }
 
   componentDidMount() {
-    this.setState({ loading: true});
+    this.setState({ loading: true });
     const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
     this.fetchItems(endpoint);
   }
@@ -38,20 +38,19 @@ class Home extends Component  {
     } else {
       endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${searchTerm}`;
     }
-    console.log(endpoint)
-
     this.fetchItems(endpoint);
   }
 
 
   loadMoreItems = () => {
     let endpoint = '';
-    this.setState({ loading: true});
-
-    if (this.state.searchTerm === ''){
-      endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${this.state.currentPage +1 }`;
+    this.setState({ loading: true });
+    
+    if (this.state.searchTerm === '') {
+      endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${this.state.currentPage + 1}`;
+      
     } else {
-      endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query${this.state.searchTerm}&page=${this.state.currentPage +1}`
+      endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${this.state.searchTerm}&page=${this.state.currentPage + 1}`;
     }
     this.fetchItems(endpoint);
   }
@@ -65,9 +64,10 @@ class Home extends Component  {
         heroImage: this.state.heroImage || result.results[0],
         loading: false,
         currentPage: result.page,
-        totalPages: result.total_Pages
+        totalPages: result.total_pages
       })
     })
+    
   }
 
   
@@ -102,10 +102,12 @@ class Home extends Component  {
                       />
             })}
           </FourColGrid>
+          {this.state.loading ? <Spinner /> : null}
+          {(this.state.currentPage <= this.state.totalPages && !this.state.loading) ?
+            <LoadMoreBtn text="Load More" onClick={this.loadMoreItems} />
+            : null }
+          
         </div>
-        
-        <Spinner />
-        <LoadMoreBtn />
       </div>
     )
   }
