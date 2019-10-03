@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import FontAwsome from 'react-fontawesome';
 import './SearchBar.css';
-import { thisTypeAnnotation } from '@babel/types';
+// import { thisTypeAnnotation } from '@babel/types';
 
 class SearchBar extends Component {
   state = {

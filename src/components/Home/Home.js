@@ -6,14 +6,13 @@ import FourColGrid from '../elements/FourColGrid/FourColGrid';
 import MovieThumb from '../elements/MovieThumb/MovieThumb';
 import LoadMoreBtn from '../elements/LoadMoreBtn/LoadMoreBtn';
 import Spinner from '../elements/Spinner/Spinner';
-
 import './Home.css'
-import { thisTypeAnnotation } from '@babel/types';
 
 class Home extends Component  {
   state = {
     movies: [],
     heroImage: null,
+    loading: false,
     currentPage: 0,
     totalPages: 0,
     searchTerm: ''
@@ -26,6 +25,7 @@ class Home extends Component  {
   }
 
   searchItems = (searchTerm) => {
+    console.log(searchTerm)
     let endpoint = '';
     this.setState({
       movies: [],
@@ -36,16 +36,19 @@ class Home extends Component  {
     if(searchTerm === ''){
       endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
     } else {
-      endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&query=${searchTerm}`;
+      endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${searchTerm}`;
     }
+    console.log(endpoint)
 
     this.fetchItems(endpoint);
   }
 
+
   loadMoreItems = () => {
     let endpoint = '';
     this.setState({ loading: true});
-    if(this.state.searchTerm === ''){
+
+    if (this.state.searchTerm === ''){
       endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${this.state.currentPage +1 }`;
     } else {
       endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query${this.state.searchTerm}&page=${this.state.currentPage +1}`
@@ -66,6 +69,11 @@ class Home extends Component  {
       })
     })
   }
+
+  
+  
+
+  
 
   render() {
     return (
@@ -88,7 +96,7 @@ class Home extends Component  {
               return <MovieThumb
                         key={i}
                         clickable={true}
-                        image={element.poster_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}/${element.poster_patch}` : './images/no_image.jpg'}
+                        image={element.poster_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}/${element.poster_path}` : './images/no_image.jpg'}
                         movieID={element.id}
                         movieName={element.original_title}  
                       />
