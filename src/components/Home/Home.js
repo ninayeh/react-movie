@@ -26,7 +26,6 @@ class Home extends Component  {
   }
 
   searchItems = (searchTerm) => {
-    console.log(searchTerm);
     let endpoint = '';
     this.setState({
       movies: [],
@@ -58,7 +57,6 @@ class Home extends Component  {
     fetch(endpoint)
     .then(result => result.json())
     .then(result =>  {
-      console.log(result);
       this.setState({
         movies: [...this.state.movies, ...result.results],
         heroImage: this.state.heroImage || result.results[0],
