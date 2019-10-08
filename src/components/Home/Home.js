@@ -66,14 +66,10 @@ class Home extends Component  {
         currentPage: result.page,
         totalPages: result.total_pages
       })
+      console.log(result)
     })
     
   }
-
-  
-  
-
-  
 
   render() {
     return (
@@ -97,7 +93,7 @@ class Home extends Component  {
                         key={i}
                         clickable={true}
                         image={element.poster_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}/${element.poster_path}` : './images/no_image.jpg'}
-                        movieID={element.id}
+                        movieId={element.id}
                         movieName={element.original_title}  
                       />
             })}
