@@ -59,7 +59,12 @@ class Movie extends Component {
   render() {
     return (
       <div className="rmdb-movie">
-        <Navigation />
+         { this.state.movie ?
+          <Navigation 
+            movie={`${this.state.movie.original_title}`} /> 
+          : null} 
+
+        
         <MovieInfo />
         <MovieInfoBar />
         
