@@ -18,15 +18,14 @@ class Movie extends Component {
 
   componentDidMount()  {
     this.setState({ loading: true })
-    const endpoint = `${API_URL}movie/${this.props.match.params.movieId}?api_key=${API_KEY}&language=en-US`; 
     
+    const endpoint = `${API_URL}movie/${this.props.match.params.movieId}?api_key=${API_KEY}&language=en-US`;  
     this.fetchItems(endpoint);
-    
   }
   
   fetchItems = (endpoint) => {
     fetch(endpoint)
-    .then(result => result.json)
+    .then(result => result.json())
     .then(result => {
       console.log(result)
       if(result.status_code)  {
@@ -39,6 +38,7 @@ class Movie extends Component {
           fetch(endpoint)
           .then(result => result.json())
           .then(result => {
+            // console.log(result)
             const directors = result.crew.filter( (member) => member.job === "Director");
 
             this.setState({
@@ -49,6 +49,7 @@ class Movie extends Component {
           })
         })
       }
+      
       
     })
     .catch(error => console.error('Error:', error)
