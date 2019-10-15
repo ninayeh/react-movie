@@ -6,18 +6,19 @@ import Movie from '../Movie/Movie'
 import NotFound from '../elements/NotFound/NotFound';
 
 const App = () =>  {
-  return (
-    <BrowserRouter>
-      <React.Fragment>
-        <Header />
-        <Switch>
-          <Route path="/" component={Home} exact />
-          <Route path="/:movieId" component={Movie} exact /> 
-          <Route component={NotFound} />
-        </Switch>
-      </React.Fragment>
-    </BrowserRouter>
-  )
+  return <h1>{process.env.API_URL}</h1>; 
+  // (
+  //   <BrowserRouter>
+  //     <React.Fragment>
+  //       <Header />
+  //       <Switch>
+  //         <Route path="/" component={Home} exact />
+  //         <Route path="/:movieId" component={Movie} exact /> 
+  //         <Route component={NotFound} />
+  //       </Switch>
+  //     </React.Fragment>
+  //   </BrowserRouter>
+  // )
 }
 
 export default App;
