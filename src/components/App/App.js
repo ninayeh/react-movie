@@ -4,9 +4,11 @@ import Header from '../elements/Header/Header';
 import Home from '../Home/Home';
 import Movie from '../Movie/Movie'
 import NotFound from '../elements/NotFound/NotFound';
+import {API_URL} from '../../config';
 
+console.log(API_URL)
 const App = () =>  {
-  return <h1>{process.env.API_URL}</h1>; 
+return `<h1>${ process.env.REACT_APP_API_URL}</h1>`; 
   // (
   //   <BrowserRouter>
   //     <React.Fragment>
