@@ -3,6 +3,7 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
+    "dotenv": "^8.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -11,8 +12,7 @@
     "react-scripts": "^3.0.1"
   },
   "scripts": {
-    "dev": "react-scripts start",
-    "start": "serve -s build",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
@@ -29,6 +29,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "homepage": "https://react-movie-01.herokuapp.com/"
+  }
 }

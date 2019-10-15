@@ -6,7 +6,8 @@ import FourColGrid from '../elements/FourColGrid/FourColGrid';
 import MovieThumb from '../elements/MovieThumb/MovieThumb';
 import LoadMoreBtn from '../elements/LoadMoreBtn/LoadMoreBtn';
 import Spinner from '../elements/Spinner/Spinner';
-import './Home.css'
+import './Home.css';
+
 
 class Home extends Component  {
   state = {
@@ -30,7 +31,6 @@ class Home extends Component  {
   }
 
   searchItems = (searchTerm) => {
-    console.log(searchTerm)
     let endpoint = '';
     this.setState({
       movies: [],
