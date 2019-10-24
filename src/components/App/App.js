@@ -8,19 +8,18 @@ import {API_URL} from '../../config';
 
 console.log(API_URL)
 const App = () =>  {
-return `<h1>${ process.env.REACT_APP_API_URL}</h1>`; 
-  // (
-  //   <BrowserRouter>
-  //     <React.Fragment>
-  //       <Header />
-  //       <Switch>
-  //         <Route path="/" component={Home} exact />
-  //         <Route path="/:movieId" component={Movie} exact /> 
-  //         <Route component={NotFound} />
-  //       </Switch>
-  //     </React.Fragment>
-  //   </BrowserRouter>
-  // )
+  return(
+    <BrowserRouter>
+      <React.Fragment>
+        <Header />
+        <Switch>
+          <Route path="/" component={Home} exact />
+          <Route path="/:movieId" component={Movie} exact /> 
+          <Route component={NotFound} />
+        </Switch>
+      </React.Fragment>
+    </BrowserRouter>
+  )
 }
 
 export default App;

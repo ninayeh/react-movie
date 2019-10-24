@@ -25,7 +25,8 @@ class Home extends Component  {
       this.setState({...state});
     } else {
       this.setState({ loading: true });
-      const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+      // const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+      const endpoint = `https://read-movie-api.herokuapp.com/v1/movies`;
       this.fetchItems(endpoint);
     } 
   }
@@ -39,9 +40,11 @@ class Home extends Component  {
     })
 
     if(searchTerm === ''){
-      endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+      // endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+      endpoint = `https://read-movie-api.herokuapp.com/v1/movies`;
     } else {
-      endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${searchTerm}`;
+      // endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${searchTerm}`;
+      endpoint = `https://read-movie-api.herokuapp.com/v1/search?query=${searchTerm}`;
     }
     this.fetchItems(endpoint);
   }
