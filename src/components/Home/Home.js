@@ -53,7 +53,7 @@ class Home extends Component  {
     this.setState({ loading: true });
     
     if (this.state.searchTerm === '') {
-      endpoint = `hhttps://read-movie-api.herokuapp.com/v1/movies?page=${this.state.currentPage + 1}`;
+      endpoint = `https://read-movie-api.herokuapp.com/v1/movies?page=${this.state.currentPage + 1}`;
     } else {
       endpoint = `https://read-movie-api.herokuapp.com/v1/search?query=${this.state.searchTerm}&page=${this.state.currentPage + 1}`;
     }
