@@ -4,9 +4,9 @@ import Header from '../elements/Header/Header';
 import Home from '../Home/Home';
 import Movie from '../Movie/Movie'
 import NotFound from '../elements/NotFound/NotFound';
-import {API_URL} from '../../config';
 
-console.log(API_URL)
+
+
 const App = () =>  {
   return(
     <BrowserRouter>

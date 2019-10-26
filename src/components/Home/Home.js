@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {API_URL, API_KEY, IMAGE_BASE_URL, POSTER_SIZE, BACKDROP_SIZE} from '../../config';
+import {IMAGE_BASE_URL, POSTER_SIZE, BACKDROP_SIZE} from '../../config';
 import HeroImage from '../elements/HeroImage/HeroImage';
 import SearchBar from '../elements/SearchBar/SearchBar';
 import FourColGrid from '../elements/FourColGrid/FourColGrid';
@@ -24,9 +24,8 @@ class Home extends Component  {
       const state = JSON.parse(localStorage.getItem('HomeState'));
       this.setState({...state});
     } else {
-      this.setState({ loading: true });
-      // const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
-      const endpoint = `https://read-movie-api.herokuapp.com/v1/movies`;
+      this.setState({ loading: true });    
+      const endpoint = `https://read-movie-api.herokuapp.com/v1/movies?page=1`;
       this.fetchItems(endpoint);
     } 
   }
@@ -40,10 +39,9 @@ class Home extends Component  {
     })
 
     if(searchTerm === ''){
-      // endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
-      endpoint = `https://read-movie-api.herokuapp.com/v1/movies`;
+      endpoint = `https://read-movie-api.herokuapp.com/v1/movies?page=1`;
+      
     } else {
-      // endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${searchTerm}`;
       endpoint = `https://read-movie-api.herokuapp.com/v1/search?query=${searchTerm}`;
     }
     this.fetchItems(endpoint);
@@ -55,10 +53,9 @@ class Home extends Component  {
     this.setState({ loading: true });
     
     if (this.state.searchTerm === '') {
-      endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${this.state.currentPage + 1}`;
-      
+      endpoint = `hhttps://read-movie-api.herokuapp.com/v1/movies?page=${this.state.currentPage + 1}`;
     } else {
-      endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${this.state.searchTerm}&page=${this.state.currentPage + 1}`;
+      endpoint = `https://read-movie-api.herokuapp.com/v1/search?query=${this.state.searchTerm}&page=${this.state.currentPage + 1}`;
     }
     this.fetchItems(endpoint);
   }
@@ -67,6 +64,7 @@ class Home extends Component  {
     fetch(endpoint)
     .then(result => result.json())
     .then(result =>  {
+      console.log(result)
       this.setState({
         movies: [...this.state.movies, ...result.results],
         heroImage: this.state.heroImage || result.results[0],
