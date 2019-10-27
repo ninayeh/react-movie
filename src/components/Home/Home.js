@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {POSTER_SIZE, BACKDROP_SIZE} from '../../config';
+import {API_URL, IMAGE_BASE_URL, POSTER_SIZE, BACKDROP_SIZE} from '../../config';
 import HeroImage from '../elements/HeroImage/HeroImage';
 import SearchBar from '../elements/SearchBar/SearchBar';
 import FourColGrid from '../elements/FourColGrid/FourColGrid';
@@ -25,7 +25,7 @@ class Home extends Component  {
       this.setState({...state});
     } else {
       this.setState({ loading: true });    
-      const endpoint = `https://read-movie-api.herokuapp.com/v1/movies?page=1`;
+      const endpoint = `${API_URL}movies?page=1`;
       this.fetchItems(endpoint);
     } 
   }
@@ -39,10 +39,10 @@ class Home extends Component  {
     })
 
     if(searchTerm === ''){
-      endpoint = `https://read-movie-api.herokuapp.com/v1/movies?page=1`;
+      endpoint = `${API_URL}movies?page=1`;
       
     } else {
-      endpoint = `https://read-movie-api.herokuapp.com/v1/search?query=${searchTerm}`;
+      endpoint = `${API_URL}search?query=${searchTerm}`;
     }
     this.fetchItems(endpoint);
   }
@@ -53,9 +53,9 @@ class Home extends Component  {
     this.setState({ loading: true });
     
     if (this.state.searchTerm === '') {
-      endpoint = `https://read-movie-api.herokuapp.com/v1/movies?page=${this.state.currentPage + 1}`;
+      endpoint = `${API_URL}movies?page=${this.state.currentPage + 1}`;
     } else {
-      endpoint = `https://read-movie-api.herokuapp.com/v1/search?query=${this.state.searchTerm}&page=${this.state.currentPage + 1}`;
+      endpoint = `${API_URL}search?query=${this.state.searchTerm}&page=${this.state.currentPage + 1}`;
     }
     this.fetchItems(endpoint);
   }
@@ -86,7 +86,7 @@ class Home extends Component  {
       { this.state.heroImage ?
         <div>
           <HeroImage 
-            image={`http://image.tmdb.org/t/p/${BACKDROP_SIZE}/${this.state.heroImage.backdrop_path}`}
+            image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}/${this.state.heroImage.backdrop_path}`}
 
             title={`${this.state.heroImage.original_title}`}
             text={`${this.state.heroImage.overview}`}
@@ -102,7 +102,7 @@ class Home extends Component  {
               return <MovieThumb
                         key={i}
                         clickable={true}
-                        image={element.poster_path ? `http://image.tmdb.org/t/p/${POSTER_SIZE}/${element.poster_path}` : './images/no_image.jpg'}
+                        image={element.poster_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}/${element.poster_path}` : './images/no_image.jpg'}
                         movieId={element.id}
                         movieName={element.original_title}  
                       />
