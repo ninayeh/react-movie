@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {IMAGE_BASE_URL, POSTER_SIZE, BACKDROP_SIZE} from '../../config';
 import HeroImage from '../elements/HeroImage/HeroImage';
 import SearchBar from '../elements/SearchBar/SearchBar';
 import FourColGrid from '../elements/FourColGrid/FourColGrid';
@@ -86,7 +85,8 @@ class Home extends Component  {
       { this.state.heroImage ?
         <div>
           <HeroImage 
-            image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}/${this.state.heroImage.backdrop_path}`}
+            image={`http://image.tmdb.org/t/p/w1280/${this.state.heroImage.backdrop_path}`}
+
             title={`${this.state.heroImage.original_title}`}
             text={`${this.state.heroImage.overview}`}
           />
@@ -101,7 +101,7 @@ class Home extends Component  {
               return <MovieThumb
                         key={i}
                         clickable={true}
-                        image={element.poster_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}/${element.poster_path}` : './images/no_image.jpg'}
+                        image={element.poster_path ? `http://image.tmdb.org/t/p/w1280/${element.poster_path}` : './images/no_image.jpg'}
                         movieId={element.id}
                         movieName={element.original_title}  
                       />
