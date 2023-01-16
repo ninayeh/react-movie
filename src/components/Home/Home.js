@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {API_URL, IMAGE_BASE_URL, POSTER_SIZE, BACKDROP_SIZE} from '../../config';
+import {API_URL,API_KEY, IMAGE_BASE_URL, POSTER_SIZE, BACKDROP_SIZE} from '../../config';
 import HeroImage from '../elements/HeroImage/HeroImage';
 import SearchBar from '../elements/SearchBar/SearchBar';
 import FourColGrid from '../elements/FourColGrid/FourColGrid';
@@ -25,7 +25,7 @@ class Home extends Component  {
       this.setState({...state});
     } else {
       this.setState({ loading: true });    
-      const endpoint = `${API_URL}movies?page=1`;
+      const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}`;
       this.fetchItems(endpoint);
     } 
   }
