@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { API_URL } from '../../config';
+import { API_URL,API_KEY } from '../../config';
 import Navigation from '../elements/Navigation/Navigation';
 import MovieInfo from '../elements/MovieInfo/MovieInfo';
 import MovieInfoBar from '../elements/MovieInfoBar/MovieInfoBar';
@@ -22,7 +22,8 @@ class Movie extends Component {
       this.setState({...state});
     } else {
       this.setState({ loading: true })
-      const endpoint = `${API_URL}movies/${this.props.match.params.movieId}`;
+      // fetch movie detail
+      const endpoint = `${API_URL}movie/${this.props.match.params.movieId}?api_key=${API_KEY}`;
       this.fetchItems(endpoint);
     }
     
@@ -37,8 +38,8 @@ class Movie extends Component {
         this.setState({loading:false});
       } else {
         this.setState({movie: result}, () => {
-          // fetch actor in the setState code back function      
-          const endpoint = `${API_URL}movies/${this.props.match.params.movieId}/credit`;
+          // fetch actor in the setState code back function     
+          const endpoint = `${API_URL}movie/${this.props.match.params.movieId}/credits?api_key=${API_KEY}`;
           fetch(endpoint)
           .then(result => result.json())
           .then(result => {

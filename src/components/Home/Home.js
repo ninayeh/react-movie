@@ -39,10 +39,10 @@ class Home extends Component  {
     })
 
     if(searchTerm === ''){
-      endpoint = `${API_URL}movies?page=1`;
+      endpoint = `${API_URL}movie/popular?api_key=${API_KEY}`;
       
     } else {
-      endpoint = `${API_URL}search?query=${searchTerm}`;
+      endpoint = `${API_URL}search/movie?api_key=${API_KEY}&query=${searchTerm}`;
     }
     this.fetchItems(endpoint);
   }
