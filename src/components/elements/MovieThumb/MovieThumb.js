@@ -6,9 +6,9 @@ const MovieThumb = (props) => {
   return(
     <div className='rmdb-moviethumb' >
       {props.clickable ?
-        <Link to={{ pathname: `/${props.movieId}`, movieName: `${props.movieName}`}} >
+        <Link to={`${props.movieId}`} state={{ some: "value" }} >
           <img alt="moviethumb" src={props.image} />
-        </Link>
+        </Link>  
         :
         <img alt="moviethumb" src={props.image} /> 
       }
