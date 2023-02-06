@@ -12,8 +12,8 @@ const App = () => {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/:movieId" element={<Movie />} exact />
+        <Route path="/react-movie" element={<Home />} />
+        <Route path="/react-movie/:movieId" element={<Movie />} exact />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
