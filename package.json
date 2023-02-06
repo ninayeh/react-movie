@@ -1,5 +1,6 @@
 {
   "name": "react_movie_db_course",
+  "homepage": "https://itsninayeh.com/react-movie/",
   "version": "0.2.0",
   "private": true,
   "dependencies": {
@@ -11,11 +12,12 @@
     "react-scripts": "^5.0.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
+    "eject": "react-scripts eject"
   },
   "browserslist": {
     "production": [
@@ -28,5 +30,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }

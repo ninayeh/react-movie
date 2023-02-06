@@ -53,9 +53,11 @@ class Home extends Component  {
     this.setState({ loading: true });
     
     if (this.state.searchTerm === '') {
-      endpoint = `${API_URL}movies?page=${this.state.currentPage + 1}`;
+      // const url = `${API_URL}movie/popular?api_key=${API_KEY}&page=${pageNum}`;
+      endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&page=${this.state.currentPage + 1}`;
     } else {
-      endpoint = `${API_URL}search?query=${this.state.searchTerm}&page=${this.state.currentPage + 1}`;
+      // endpoint = `${API_URL}search?query=${this.state.searchTerm}&page=${this.state.currentPage + 1}`;
+      endpoint = `${API_URL}search/movie?api_key=${API_KEY}&query=${this.state.searchTerm}&page=${this.state.currentPage + 1}`;
     }
     this.fetchItems(endpoint);
   }
